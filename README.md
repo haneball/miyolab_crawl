@@ -3,35 +3,40 @@
 #### 介绍
 基于Scrapy开发的爬虫，用于爬取米游社的角色、武器的数据。
 
-#### 软件架构
-软件架构说明
+
+#### 安装
+安装Python依赖的库: Scrapy、PyMySQL。
+
+```
+pip install -r requirements.txt
+```
+建议使用3.6+以上的Python版本。
 
 
-#### 安装教程
+#### 运行
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1. 移至项目的目录位置，
+```
+cd miyolab_crawl
+```
+2. 使用以下命令运行爬虫
+```
+scrapy crawl miyolab_spider
+```
 
 
-#### 特技
+#### 参数说明
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+在 miyolab_crawl 下的 setting.py 文件中有以下几个可选配置参数
+1. CHARACTER_RULE 跳过爬取的角色；
+2. WEAPON_RULE 跳过爬取的武器；
+3. MODE_LIST 角色的有效词条模型列表；
+4. ELEMENT_LIST 用于将「燃愿玛瑙碎屑」等突破碎屑名称转换为对应的元素名称（观测枢部分角色不显示神之眼的元素，故采用此法获取）；
+5. TYPE_LIST 用于将武器类型转换为所需的格式。
+
+
+#### 注意事项
+
+1. 爬虫运行前，请务必确保已经在MySQL中创建了对应的数据库、数据表并连接MySQL；
+1. 若进行多次爬取，请先将数据表的数据迁出或清空，否则会因为主键重复而报错。
+
